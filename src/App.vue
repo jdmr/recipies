@@ -44,20 +44,30 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="flex flex-col">
-                        <label :for="rec.id + 'name'">Item Name</label>
-                        <input :id="rec.id + 'name'" type="text" />
+                    <div v-if="rec.id == selected.id">
+                        <div class="flex flex-col">
+                            <label :for="rec.id + 'name'">Item Name</label>
+                            <input :id="rec.id + 'name'" type="text" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label :for="rec.id + 'amount'">Item Amount</label>
+                            <input :id="rec.id + 'amount'" type="text" />
+                        </div>
+                        <div class="grid">
+                            <button
+                                class="bg-purple-500 text-white mt-4 rounded-full"
+                                @click="addItem"
+                            >
+                                Add Item
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex flex-col">
-                        <label :for="rec.id + 'amount'">Item Amount</label>
-                        <input :id="rec.id + 'amount'" type="text" />
-                    </div>
-                    <div class="grid">
+                    <div v-else>
                         <button
-                            class="bg-purple-500 text-white mt-4 rounded-full"
-                            @click="addItem"
+                            class="bg-purple-500 text-white mt-4 rounded-full px-4 py-2"
+                            @click="selected = rec"
                         >
-                            Add Item
+                            Edit
                         </button>
                     </div>
                 </div>
